@@ -1,0 +1,25 @@
+if "testfile.txt.a" in listfiles():
+  removefile("testfile.txt.a")
+if "testfile.txt.b" in listfiles():
+  removefile("testfile.txt.b")
+
+myfile=ABopenfile("testfile.txt",True)  #Create an AB file
+myfile.writeat("StestE",0)
+myfile.close()
+
+myfile=ABopenfile("testfile.txt",True)  #Create an AB file
+myfile.writeat("absdhjkad",0)
+myfile.close()
+
+myfile=ABopenfile("testfile.txt",True)
+s = []
+content = myfile.readat(None, 0)
+s = list(content)    
+
+try:
+ assert(s[0] == 'S')
+ myfile.close()
+
+except:
+ myfile.close()
+ log("File not beginning with S")

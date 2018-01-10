@@ -1,0 +1,21 @@
+if "testfile.txt.a" in listfiles():
+  removefile("testfile.txt.a")
+if "testfile.txt.b" in listfiles():
+  removefile("testfile.txt.b")
+
+myfile=ABopenfile("testfile.txt",True)  #Create an AB file
+
+
+myfile.writeat("StestE",0)
+myfile.writeat("S123E",0)						#overwriting the content in file
+myfile.close()
+
+myfile=ABopenfile("testfile.txt",True)
+
+try:
+ assert('S123EE' == myfile.readat(None,0))
+ myfile.close()
+
+except:
+ myfile.close()
+ log("Valid Data multiple write to a file is unsuccessfull!")

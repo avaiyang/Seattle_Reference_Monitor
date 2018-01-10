@@ -1,0 +1,20 @@
+if "testfile.txt.a" in listfiles():
+  removefile("testfile.txt.a")
+if "testfile.txt.b" in listfiles():
+  removefile("testfile.txt.b")
+
+myfile=ABopenfile("testfile.txt",True)  #Create an AB file
+
+# Write invalid data to the file
+myfile.writeat("Stest",0)
+myfile.close()
+
+myfile=ABopenfile("testfile.txt",True)
+
+try:
+ assert('SE' == myfile.readat(None,0))						#checking if the file has SE in it
+ myfile.close()
+
+except:
+ myfile.close()
+ log("Valid Data SE not present in the file!")		#incase the file does not have SE in it when invalid data is written

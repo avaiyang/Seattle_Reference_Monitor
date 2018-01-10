@@ -1,0 +1,21 @@
+if "testfile.txt.a" in listfiles():
+  removefile("testfile.txt.a")
+if "testfile.txt.b" in listfiles():
+  removefile("testfile.txt.b")
+
+
+myfile=ABopenfile("testfile.txt",True)  #Create an AB file
+
+myfile.writeat("StestE",0)				#writing valid data
+myfile.writeat("S123567",0)				#overwriting invalid data
+myfile.close()
+
+myfile=ABopenfile("testfile.txt",True)
+
+try:
+ assert('SE' == myfile.readat(None,0))	#since not valid data will not be copied to valid file, checking SE
+ myfile.close()
+
+except:
+ myfile.close()
+ log("InValid Data write to a file is successfull!")
